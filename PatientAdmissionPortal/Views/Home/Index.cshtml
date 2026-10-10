@@ -1,0 +1,41 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="p-5 mb-4 bg-white rounded-3 shadow-sm text-center">
+    <h1 class="display-6">Welcome to the Patient Admission Portal</h1>
+    <p class="lead text-muted">Register new admissions, track patient status and manage beds in one place.</p>
+    <a class="btn btn-primary btn-lg me-2" asp-controller="Admissions" asp-action="Create">+ New admission</a>
+    <a class="btn btn-outline-primary btn-lg" asp-controller="Admissions" asp-action="Index">View all admissions</a>
+</div>
+
+<div class="row g-3 text-center">
+    <div class="col-6 col-md-3">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <div class="fs-2 text-warning">@ViewBag.Pending</div><div class="text-muted">Pending</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-6 col-md-3">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <div class="fs-2 text-success">@ViewBag.Admitted</div><div class="text-muted">Admitted</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-6 col-md-3">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <div class="fs-2 text-secondary">@ViewBag.Discharged</div><div class="text-muted">Discharged</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-6 col-md-3">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <div class="fs-2 text-danger">@ViewBag.Emergency</div><div class="text-muted">Emergency waiting</div>
+            </div>
+        </div>
+    </div>
+</div>

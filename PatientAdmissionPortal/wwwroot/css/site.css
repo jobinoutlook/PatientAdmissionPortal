@@ -1,0 +1,135 @@
+/* ==========================================================================
+   Patient Admission Portal - Sky Blue theme
+   Overrides Bootstrap 5.3 (loaded from the CDN) through its CSS variables.
+   Load this file AFTER the Bootstrap stylesheet.
+   ========================================================================== */
+
+:root {
+  /* Sky blue palette */
+  --sky-50:  #f0f9ff;
+  --sky-100: #e0f2fe;
+  --sky-200: #bae6fd;
+  --sky-300: #7dd3fc;
+  --sky-400: #38bdf8;
+  --sky-500: #0ea5e9;
+  --sky-600: #0284c7;   /* main brand colour */
+  --sky-700: #0369a1;
+  --sky-800: #075985;
+  --sky-900: #0c4a6e;
+
+  /* Bootstrap theme variables */
+  --bs-primary: var(--sky-600);
+  --bs-primary-rgb: 2, 132, 199;                 /* keep in sync with --sky-600 */
+  --bs-primary-text-emphasis: var(--sky-800);
+  --bs-primary-bg-subtle: var(--sky-100);
+  --bs-primary-border-subtle: var(--sky-200);
+
+  --bs-light-rgb: 240, 249, 255;                 /* page background (body.bg-light) */
+  --bs-body-color: #12303f;
+  --bs-body-color-rgb: 18, 48, 63;
+  --bs-secondary-color: rgba(18, 48, 63, .65);   /* .text-muted */
+  --bs-heading-color: var(--sky-900);
+
+  --bs-link-color: var(--sky-600);
+  --bs-link-color-rgb: 2, 132, 199;
+  --bs-link-hover-color: var(--sky-800);
+  --bs-link-hover-color-rgb: 7, 89, 133;
+
+  --bs-border-color: var(--sky-200);
+  --bs-border-radius: .6rem;
+  --bs-border-radius-lg: 1rem;
+  --bs-box-shadow-sm: 0 2px 10px rgba(2, 132, 199, .10);
+  --bs-focus-ring-color: rgba(14, 165, 233, .25);
+}
+
+/* ---------- Page ---------- */
+body {
+  background-image: linear-gradient(180deg, var(--sky-100) 0, rgba(240, 249, 255, 0) 320px);
+  background-repeat: no-repeat;
+}
+::selection { background: var(--sky-200); color: var(--sky-900); }
+
+/* ---------- Navbar ---------- */
+.navbar.bg-primary {
+  background-image: linear-gradient(90deg, var(--sky-500), var(--sky-600) 60%, var(--sky-700));
+  box-shadow: 0 2px 12px rgba(2, 132, 199, .25);
+}
+.navbar-brand { font-weight: 700; letter-spacing: .2px; }
+.navbar .btn-light {
+  --bs-btn-color: var(--sky-700);
+  --bs-btn-bg: #fff;
+  --bs-btn-border-color: #fff;
+  --bs-btn-hover-color: var(--sky-800);
+  --bs-btn-hover-bg: var(--sky-100);
+  --bs-btn-hover-border-color: var(--sky-100);
+  --bs-btn-active-color: var(--sky-800);
+  --bs-btn-active-bg: var(--sky-200);
+  --bs-btn-active-border-color: var(--sky-200);
+}
+.navbar .btn-outline-light { --bs-btn-hover-color: var(--sky-700); }
+
+/* ---------- Buttons ---------- */
+.btn { font-weight: 500; }
+.btn-primary {
+  --bs-btn-bg: var(--sky-600);
+  --bs-btn-border-color: var(--sky-600);
+  --bs-btn-hover-bg: var(--sky-700);
+  --bs-btn-hover-border-color: var(--sky-700);
+  --bs-btn-active-bg: var(--sky-800);
+  --bs-btn-active-border-color: var(--sky-800);
+  --bs-btn-disabled-bg: var(--sky-300);
+  --bs-btn-disabled-border-color: var(--sky-300);
+  --bs-btn-focus-shadow-rgb: 14, 165, 233;
+}
+.btn-outline-primary {
+  --bs-btn-color: var(--sky-700);
+  --bs-btn-border-color: var(--sky-500);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: var(--sky-600);
+  --bs-btn-hover-border-color: var(--sky-600);
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: var(--sky-700);
+  --bs-btn-active-border-color: var(--sky-700);
+  --bs-btn-disabled-color: var(--sky-400);
+  --bs-btn-disabled-border-color: var(--sky-300);
+  --bs-btn-focus-shadow-rgb: 14, 165, 233;
+}
+.btn-link {
+  --bs-btn-color: var(--sky-600);
+  --bs-btn-hover-color: var(--sky-800);
+  --bs-btn-active-color: var(--sky-800);
+}
+
+/* ---------- Cards ---------- */
+.card {
+  border: 1px solid var(--sky-100);
+  border-radius: var(--bs-border-radius-lg);
+}
+.card > .table-responsive { border-radius: inherit; }
+.bg-white { background-image: linear-gradient(135deg, #fff 0%, var(--sky-50) 100%); } /* home hero */
+
+/* ---------- Forms ---------- */
+.form-label { font-weight: 600; color: var(--sky-900); }
+.form-control, .form-select { border-color: var(--sky-200); background-color: #fff; }
+.form-control::placeholder { color: #8ea9b8; }
+.form-control:focus, .form-select:focus {
+  border-color: var(--sky-400);
+  box-shadow: 0 0 0 .25rem rgba(14, 165, 233, .2);
+}
+.form-check-input:checked { background-color: var(--sky-600); border-color: var(--sky-600); }
+.form-check-input:focus { border-color: var(--sky-400); box-shadow: 0 0 0 .25rem rgba(14, 165, 233, .2); }
+.form-text { color: rgba(18, 48, 63, .6); }
+
+/* ---------- Tables ---------- */
+.table { --bs-table-border-color: var(--sky-100); }
+.table-light {
+  --bs-table-bg: var(--sky-100);
+  --bs-table-color: var(--sky-900);
+  --bs-table-border-color: var(--sky-200);
+}
+.table-hover > tbody > tr:hover > * { --bs-table-bg-state: var(--sky-50); }
+
+/* ---------- Misc ---------- */
+.badge { font-weight: 600; letter-spacing: .02em; }
+.alert { border: 0; border-radius: .8rem; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--sky-400); outline-offset: 2px; }

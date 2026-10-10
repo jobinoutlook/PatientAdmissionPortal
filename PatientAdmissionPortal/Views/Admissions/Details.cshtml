@@ -1,0 +1,41 @@
+@model Admission
+@{ ViewData["Title"] = "Admission #" + Model.Id; }
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h3 class="mb-0">@Model.FullName <small class="text-muted">#@Model.Id</small></h3>
+  <span class="badge fs-6 bg-@(Model.Status == AdmissionStatus.Pending ? "warning text-dark" : Model.Status == AdmissionStatus.Admitted ? "success" : "secondary")">@Model.Status</span>
+</div>
+<div class="row g-3">
+  <div class="col-md-7"><div class="card shadow-sm"><div class="card-body">
+    <dl class="row mb-0">
+      <dt class="col-sm-5">Age / Gender</dt><dd class="col-sm-7">@Model.Age y, @Model.Gender</dd>
+      <dt class="col-sm-5">Phone</dt><dd class="col-sm-7">@Model.Phone</dd>
+      <dt class="col-sm-5">Email</dt><dd class="col-sm-7">@(Model.Email ?? "-")</dd>
+      <dt class="col-sm-5">Emergency contact</dt><dd class="col-sm-7">@Model.EmergencyContactName (@Model.EmergencyContactPhone)</dd>
+      <dt class="col-sm-5">Department</dt><dd class="col-sm-7">@Model.Department</dd>
+      <dt class="col-sm-5">Type</dt><dd class="col-sm-7">@Model.Type</dd>
+      <dt class="col-sm-5">Reason</dt><dd class="col-sm-7">@Model.Reason</dd>
+      <dt class="col-sm-5">Insurance</dt><dd class="col-sm-7">@(Model.InsuranceProvider ?? "-") @Model.InsuranceId</dd>
+      <dt class="col-sm-5">Requested</dt><dd class="col-sm-7">@Model.CreatedAt.ToString("dd MMM yyyy, HH:mm")</dd>
+      <dt class="col-sm-5">Bed / ward</dt><dd class="col-sm-7">@(Model.Bed ?? "-")</dd>
+      <dt class="col-sm-5">Admitted</dt><dd class="col-sm-7">@(Model.AdmittedAt?.ToString("dd MMM yyyy, HH:mm") ?? "-")</dd>
+      <dt class="col-sm-5">Discharged</dt><dd class="col-sm-7">@(Model.DischargedAt?.ToString("dd MMM yyyy, HH:mm") ?? "-")</dd>
+    </dl>
+  </div></div></div>
+  <div class="col-md-5">
+    @if (Model.Status == AdmissionStatus.Pending)
+    {
+      <form asp-action="Admit" asp-route-id="@Model.Id" method="post" class="card shadow-sm p-3">
+        <label class="form-label">Assign bed / ward</label>
+        <input name="bed" class="form-control mb-2" placeholder="e.g. Ward B - Bed 12" />
+        <button class="btn btn-success">Admit patient</button>
+      </form>
+    }
+    else if (Model.Status == AdmissionStatus.Admitted)
+    {
+      <form asp-action="Discharge" asp-route-id="@Model.Id" method="post" class="card shadow-sm p-3">
+        <button class="btn btn-outline-secondary">Discharge patient</button>
+      </form>
+    }
+    <a class="btn btn-link mt-2" asp-action="Index">← Back to list</a>
+  </div>
+</div>

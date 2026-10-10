@@ -1,0 +1,32 @@
+@model List<Admission>
+@{ ViewData["Title"] = "Admissions"; }
+<form method="get" class="row g-2 mb-3">
+  <div class="col-md-5"><input name="q" value="@ViewBag.Q" class="form-control" placeholder="Search by name or ID" /></div>
+  <div class="col-md-3">
+    <select name="status" class="form-select" asp-items="Html.GetEnumSelectList<AdmissionStatus>()">
+      <option value="">All statuses</option>
+    </select>
+  </div>
+  <div class="col-auto"><button class="btn btn-primary">Filter</button></div>
+</form>
+
+<div class="card shadow-sm"><div class="table-responsive">
+<table class="table table-hover align-middle mb-0">
+  <thead class="table-light"><tr><th>#</th><th>Patient</th><th>Department</th><th>Type</th><th>Status</th><th>Bed</th><th></th></tr></thead>
+  <tbody>
+  @foreach (var a in Model)
+  {
+    var badge = a.Status switch { AdmissionStatus.Pending => "warning text-dark", AdmissionStatus.Admitted => "success", _ => "secondary" };
+    <tr>
+      <td>@a.Id</td>
+      <td>@a.FullName <small class="text-muted">(@a.Age y, @a.Gender)</small></td>
+      <td>@a.Department</td>
+      <td>@if (a.Type == AdmissionType.Emergency) { <span class="badge bg-danger">Emergency</span> } else { <span>Planned</span> }</td>
+      <td><span class="badge bg-@badge">@a.Status</span></td>
+      <td>@(a.Bed ?? "-")</td>
+      <td><a class="btn btn-outline-primary btn-sm" asp-action="Details" asp-route-id="@a.Id">View</a></td>
+    </tr>
+  }
+  @if (!Model.Any()) { <tr><td colspan="7" class="text-center text-muted py-4">No admissions found.</td></tr> }
+  </tbody>
+</table></div></div>
