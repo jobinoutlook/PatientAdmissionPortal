@@ -10,12 +10,12 @@
         <div asp-validation-summary="ModelOnly" class="text-danger mb-2"></div>
         <div class="mb-3">
           <label asp-for="Email" class="form-label"></label>
-          <input asp-for="Email" class="form-control" type="email" placeholder="e.g. name@example.com" autocomplete="email" />
+          <input asp-for="Email" class="form-control" type="email" placeholder="admin@patientportal.com" autocomplete="email" />
           <span asp-validation-for="Email" class="text-danger"></span>
         </div>
         <div class="mb-3">
           <label asp-for="Password" class="form-label"></label>
-          <input asp-for="Password" class="form-control" autocomplete="current-password" />
+          <input asp-for="Password" class="form-control" autocomplete="current-password" placeholder="Admin123*" />
           <span asp-validation-for="Password" class="text-danger"></span>
         </div>
         <div class="form-check mb-3">
